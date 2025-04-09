@@ -1,0 +1,59 @@
+{
+  "file_size": 53785,
+  "filename": "/var/www/data/6beacd19-d9e0-49ee-ae61-363b5f55bc1a/odm_georeferencing/odm_georeferenced_model.laz",
+  "now": "2025-04-09T21:46:34+0000",
+  "pdal_version": "2.4.3 (git-version: Release)",
+  "reader": "readers.las",
+  "stats":
+  {
+    "bbox":
+    {
+      "native":
+      {
+        "bbox":
+        {
+          "maxx": 0.11,
+          "maxy": -0.02,
+          "maxz": -0.49,
+          "minx": 0.04,
+          "miny": -0.09,
+          "minz": -0.51
+        },
+        "boundary": { "type": "Polygon", "coordinates": [ [ [ 0.04, -0.09, -0.51 ], [ 0.04, -0.02, -0.51 ], [ 0.11, -0.02, -0.49 ], [ 0.11, -0.09, -0.49 ], [ 0.04, -0.09, -0.51 ] ] ] }
+      }
+    },
+    "statistic":
+    [
+      {
+        "average": 0.05655637535,
+        "count": 48115,
+        "maximum": 0.11,
+        "minimum": 0.04,
+        "name": "X",
+        "position": 0,
+        "stddev": 0.01466784977,
+        "variance": 0.0002151458168
+      },
+      {
+        "average": -0.05851148291,
+        "count": 48115,
+        "maximum": -0.02,
+        "minimum": -0.09,
+        "name": "Y",
+        "position": 1,
+        "stddev": 0.01166679351,
+        "variance": 0.0001361140709
+      },
+      {
+        "average": -0.4965536735,
+        "count": 48115,
+        "maximum": -0.49,
+        "minimum": -0.51,
+        "name": "Z",
+        "position": 2,
+        "stddev": 0.006253452533,
+        "variance": 3.910566858e-05
+      }
+    ]
+  }
+}
