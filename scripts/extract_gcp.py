@@ -74,7 +74,6 @@ def detectar_gcps(img, filename):
         elif 6 <= vertices <= 20 and ratio < 0.6:
             shape = "cruz"
             color = (255, 255, 0)
-        
 
         if shape != "desconocido":
             cv2.drawContours(img, [cnt], -1, color, 2)
@@ -109,6 +108,7 @@ def main():
             if d["shape"] in forma_a_coord:
                 x, y, z = forma_a_coord[d["shape"]]
                 f.write(f"EPSG:0,{x},{y},{z},{d['filename']},{d['cx']},{d['cy']}\n")
+                f.write(f"{x} {y} {z} {d['cx']} {d['cy']} {d['filename']}\n")
 
     print("✅ Detección completada.")
     print(f"📄 Archivo generado: {OUTPUT_TXT}")
