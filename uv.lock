@@ -1,0 +1,44 @@
+version = 1
+requires-python = ">=3.12"
+
+[[package]]
+name = "biomarscan3d"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "pydom" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "pydom", specifier = ">=0.4.0" }]
+
+[[package]]
+name = "cssutils"
+version = "2.9.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/b4/65/a054545c81eb87af898d664043578b8444ea3ded656db3da8f9d9fa21334/cssutils-2.9.0.tar.gz", hash = "sha256:89477b3d17d790e97b9fb4def708767061055795aae6f7c82ae32e967c9be4cd", size = 723452 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/c6/6e/a8ba19fe8e7a7dfaadd4597bf47f3d75a9239dd0d85870e07edeb5e803bf/cssutils-2.9.0-py3-none-any.whl", hash = "sha256:f8b013169e281c0c6083207366c5005f5dd4549055f7aba840384fb06a78745c", size = 398454 },
+]
+
+[[package]]
+name = "pydom"
+version = "0.4.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "cssutils" },
+    { name = "typing-extensions" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/22/25/a40888b661df77623fbe40c03f0c14345a00867e7280ecdfa077f0b0d3b6/pydom-0.4.0.tar.gz", hash = "sha256:be9e356c5666cf5c851ae0d8ed848ba88e2f2a80c86916a94146b40b724add06", size = 48140 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/bd/0c/053f096f19c1dd13f3ae50f69cc8962fd660f825c1e4741fd356fb0999d1/pydom-0.4.0-py3-none-any.whl", hash = "sha256:4a834c86c8a830355a39953a4fb9ff0c780d0ebd5063d92be288c11bcc1c4103", size = 145856 },
+]
+
+[[package]]
+name = "typing-extensions"
+version = "4.13.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/76/ad/cd3e3465232ec2416ae9b983f27b9e94dc8171d56ac99b345319a9475967/typing_extensions-4.13.1.tar.gz", hash = "sha256:98795af00fb9640edec5b8e31fc647597b4691f099ad75f469a2616be1a76dff", size = 106633 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/df/c5/e7a0b0f5ed69f94c8ab7379c599e6036886bffcde609969a5325f47f1332/typing_extensions-4.13.1-py3-none-any.whl", hash = "sha256:4b6cf02909eb5495cfbc3f6e8fd49217e6cc7944e145cdda8caa3734777f9e69", size = 45739 },
+]
