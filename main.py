@@ -6,7 +6,7 @@ from pyodm import Node
 # Configuraciones
 base_path = os.path.dirname(os.path.abspath(__file__))
 print(f"[INFO] Ruta base: {base_path}")
-IMAGES_DIR = Path(os.path.join(base_path, "images"))
+IMAGES_DIR = Path(os.path.join(base_path, "scripts", "images"))
 OUTPUT_DIR = Path(os.path.join(base_path, "results"))
 NODE_URL = "http://localhost:3000"
 
@@ -28,7 +28,8 @@ def main():
             "dsm": True,
             "pc-quality": "high",
             "orthophoto-resolution": 5,
-            "gcp": str(Path(base_path) / "gcp_list.txt"),
+            "force-gps": True,
+            "gcp": str(Path(base_path) / "scripts" / "gcp_list.txt"),
         },
     )
 

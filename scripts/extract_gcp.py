@@ -1,4 +1,3 @@
-import math
 from pathlib import Path
 
 import cv2
@@ -9,80 +8,81 @@ OUTPUT_DIR = Path("scripts/gcp_detected_preview")
 OUTPUT_DIR.mkdir(exist_ok=True)
 OUTPUT_TXT = Path("scripts/gcp_list.txt")
 
-# Coordenadas simuladas por forma
-forma_a_coord = {
-    "triángulo": (0, 0, 0),
-    "cuadrado": (20, 0, 0),
-    "cruz": (0, 20, 0),
-    "círculo": (20, 20, 0),
+# Coordenadas simuladas por color
+color_a_coord = {
+    "azul": (0, 0, 0),
+    "rojo": (20, 0, 0),
+    "negro": (0, 20, 0),
 }
 
 
 def detectar_gcps(img, filename):
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 
-    # 🎯 Rango personalizado para bolígrafo morado
-    lower_color = (163, 111, 0)
-    upper_color = (180, 255, 255)
-    mask = cv2.inRange(hsv, lower_color, upper_color)
+    # 🎯 Rango HSV para cada color
+    color_ranges = {
+        "azul": {
+            "lower": (0, 195, 157),
+            "upper": (128, 255, 255),
+            "bgr": (255, 0, 0),
+        },
+        "rojo": {
+            "lower": (148, 77, 0),
+            "upper": (180, 255, 255),
+            "bgr": (0, 0, 255),
+        },
+        "negro": {
+            "lower": (63, 0, 0),
+            "upper": (169, 255, 62),
+            "bgr": (50, 50, 50),
+        },
+    }
 
-    # Suavizado y limpieza
-    blur = cv2.GaussianBlur(mask, (9, 9), 0)
-    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
-    clean = cv2.morphologyEx(blur, cv2.MORPH_CLOSE, kernel, iterations=1)
-
-    # Contornos
-    contours, _ = cv2.findContours(clean, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     detecciones = []
 
-    for cnt in contours:
-        area = cv2.contourArea(cnt)
-        if area < 500 or area > 9000:
-            continue
+    for color_name, params in color_ranges.items():
+        mask = cv2.inRange(hsv, params["lower"], params["upper"])
 
-        perimeter = cv2.arcLength(cnt, True)
-        approx = cv2.approxPolyDP(cnt, 0.03 * perimeter, True)
-        vertices = len(approx)
-        x, y, w, h = cv2.boundingRect(cnt)
-        aspect_ratio = w / float(h)
-        bounding_area = w * h
-        ratio = area / bounding_area
-        circularity = 4 * math.pi * area / (perimeter * perimeter)
+        blur = cv2.GaussianBlur(mask, (9, 9), 0)
+        kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
+        clean = cv2.morphologyEx(blur, cv2.MORPH_CLOSE, kernel, iterations=1)
 
-        M = cv2.moments(cnt)
-        if M["m00"] == 0:
-            continue
-        cx = int(M["m10"] / M["m00"])
-        cy = int(M["m01"] / M["m00"])
-
-        shape = "desconocido"
-        color = (0, 0, 0)
-
-        print(
-            f"🔍 Detección: {vertices} vértices, área: {area}, relación de aspecto: {aspect_ratio:.2f}, circularidad: {circularity:.2f}"
+        contours, _ = cv2.findContours(
+            clean, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE
         )
 
-        if vertices < 7 and circularity <= 0.75:
-            shape = "triángulo"
-            color = (0, 255, 255)
-        elif (vertices == 4 or vertices == 5) and 0.80 <= aspect_ratio <= 1.08:
-            shape = "cuadrado"
-            color = (0, 255, 0)
-        elif 0.80 <= circularity <= 1.2:
-            shape = "círculo"
-            color = (0, 0, 255)
-        elif 6 <= vertices <= 20 and ratio < 0.6:
-            shape = "cruz"
-            color = (255, 255, 0)
+        for cnt in contours:
+            area = cv2.contourArea(cnt)
+            if color_name == "azul":
+                if area < 1100 or area > 30000:
+                    continue
+            elif color_name == "rojo":
+                if area < 7000 or area > 30000:
+                    continue
+            else:
+                if area < 4000 or area > 30000:
+                    continue
 
-        if shape != "desconocido":
-            cv2.drawContours(img, [cnt], -1, color, 2)
+            M = cv2.moments(cnt)
+            if M["m00"] == 0:
+                continue
+            cx = int(M["m10"] / M["m00"])
+            cy = int(M["m01"] / M["m00"])
+
+            cv2.drawContours(img, [cnt], -1, params["bgr"], 2)
             cv2.circle(img, (cx, cy), 5, (255, 255, 255), -1)
             cv2.putText(
-                img, shape, (cx + 10, cy), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2
+                img,
+                color_name,
+                (cx + 10, cy),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.5,
+                params["bgr"],
+                2,
             )
+
             detecciones.append(
-                {"shape": shape, "filename": filename, "cx": cx, "cy": cy}
+                {"color": color_name, "filename": filename, "cx": cx, "cy": cy}
             )
 
     return img, detecciones
@@ -102,12 +102,13 @@ def main():
         all_detecciones.extend(dets)
         cv2.imwrite(str(OUTPUT_DIR / file.name), salida)
 
-    # Exportar gcp_list.txt
     with open(OUTPUT_TXT, "w") as f:
+        f.write(
+            "+proj=utm +zone=10 +ellps=WGS84 +datum=WGS84 +units=m +no_defs\n"
+        )  # Header para WebODM
         for d in all_detecciones:
-            if d["shape"] in forma_a_coord:
-                x, y, z = forma_a_coord[d["shape"]]
-                f.write(f"EPSG:0,{x},{y},{z},{d['filename']},{d['cx']},{d['cy']}\n")
+            if d["color"] in color_a_coord:
+                x, y, z = color_a_coord[d["color"]]
                 f.write(f"{x} {y} {z} {d['cx']} {d['cy']} {d['filename']}\n")
 
     print("✅ Detección completada.")
