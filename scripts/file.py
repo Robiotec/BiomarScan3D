@@ -10,10 +10,9 @@ OUTPUT_TXT = Path("scripts/gcp_list.txt")
 
 # Coordenadas simuladas por color
 color_a_coord = {
-    "azul": (0, 0, 0),  # esquina inferior izquierda
-    "amarillo": (20, 0, 0),  # esquina inferior derecha
-    "negro": (0, 20, 0),  # esquina superior izquierda
-    "rojo": (20, 20, 0),  # esquina superior derecha y elevación para alinear plano
+    "azul": (0, 0, 0),
+    "rojo": (20, 0, 0),
+    "negro": (0, 20, 0),
 }
 
 
@@ -23,8 +22,8 @@ def detectar_gcps(img, filename):
     # 🎯 Rango HSV para cada color
     color_ranges = {
         "azul": {
-            "lower": (54, 230, 121),
-            "upper": (180, 255, 255),
+            "lower": (0, 195, 157),
+            "upper": (128, 255, 255),
             "bgr": (255, 0, 0),
         },
         "rojo": {
@@ -37,17 +36,13 @@ def detectar_gcps(img, filename):
             "upper": (169, 255, 62),
             "bgr": (50, 50, 50),
         },
-        "amarillo": {
-            "lower": (25, 32, 0),
-            "upper": (57, 255, 255),
-            "bgr": (0, 255, 255),
-        },
     }
 
     detecciones = []
 
     for color_name, params in color_ranges.items():
         mask = cv2.inRange(hsv, params["lower"], params["upper"])
+
         blur = cv2.GaussianBlur(mask, (9, 9), 0)
         kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
         clean = cv2.morphologyEx(blur, cv2.MORPH_CLOSE, kernel, iterations=1)
@@ -58,18 +53,14 @@ def detectar_gcps(img, filename):
 
         for cnt in contours:
             area = cv2.contourArea(cnt)
-
             if color_name == "azul":
-                if area < 100 or area > 30000:
+                if area < 1100 or area > 30000:
                     continue
             elif color_name == "rojo":
-                if area < 2500 or area > 30000:
+                if area < 7000 or area > 30000:
                     continue
-            elif color_name == "negro":
-                if area < 2500 or area > 30000:
-                    continue
-            elif color_name == "amarillo":
-                if area < 1500 or area > 60000:
+            else:
+                if area < 4000 or area > 30000:
                     continue
 
             M = cv2.moments(cnt)
@@ -112,10 +103,12 @@ def main():
         cv2.imwrite(str(OUTPUT_DIR / file.name), salida)
 
     with open(OUTPUT_TXT, "w") as f:
-        # f.write("+proj=utm +zone=17 +datum=WGS84 +units=m +no_defs\n")
+        # f.write("WGS84 UTM 17S\n")  # Header para WebODM
+        f.write("+proj=local +zone=18 +ellps=WGS84 +datum=WGS84 +units=m +no_defs\n")
         for d in all_detecciones:
             if d["color"] in color_a_coord:
                 x, y, z = color_a_coord[d["color"]]
+                # f.write(f"{x},{y},{z},{d['filename']},{d['cx']},{d['cy']}\n")
                 f.write(f"{x} {y} {z} {d['cx']} {d['cy']} {d['filename']}\n")
 
     print("✅ Detección completada.")
