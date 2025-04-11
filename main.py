@@ -21,15 +21,16 @@ def main():
         return
 
     print(f"[INFO] Subiendo {len(image_files)} imágenes para procesar...")
-
+    image_files.append(str(Path(base_path) / "scripts" / "gcp_list.txt"))
     task = node.create_task(
-        image_files,
+        files=image_files,
         options={
-            "dsm": True,
+            # "dsm": True,
+            # "dtm": True,
             "pc-quality": "high",
             "orthophoto-resolution": 5,
-            "force-gps": True,
-            "gcp": str(Path(base_path) / "scripts" / "gcp_list.txt"),
+            "force-gps": False,
+            "use-exif": False,
         },
     )
 

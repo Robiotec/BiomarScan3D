@@ -1,62 +1,65 @@
 {
   "bounds": [
-    -2,
-    -2,
-    -2,
-    2,
-    2,
-    2
+    668178,
+    -10,
+    -15,
+    668214,
+    26,
+    21
   ],
   "boundsConforming": [
-    -1.0,
-    -1.0,
-    -1.0,
-    1.0,
-    1.0,
-    1.0
+    668179.0,
+    -4.0,
+    -4.0,
+    668212.0,
+    20.0,
+    10.0
   ],
   "dataType": "laszip",
   "hierarchyType": "json",
-  "points": 822395,
+  "points": 740168,
   "schema": [
     {
-      "count": 822395,
-      "maximum": 0.93,
-      "mean": 0.11160059338882171,
-      "minimum": -0.63,
+      "count": 740168,
+      "maximum": 668211.963,
+      "mean": 668194.7838587791,
+      "minimum": 668179.688,
       "name": "X",
-      "scale": 0.01,
+      "offset": 668196,
+      "scale": 0.001,
       "size": 4,
-      "stddev": 0.3821476577308576,
+      "stddev": 8.262049202547688,
       "type": "signed",
-      "variance": 0.14603683230918071
+      "variance": 68.2614570253189
     },
     {
-      "count": 822395,
-      "maximum": 0.51,
-      "mean": -0.10821010584938527,
-      "minimum": -0.73,
+      "count": 740168,
+      "maximum": 19.672,
+      "mean": 6.485291539218211,
+      "minimum": -3.6850000000000005,
       "name": "Y",
-      "scale": 0.01,
+      "offset": 8,
+      "scale": 0.001,
       "size": 4,
-      "stddev": 0.27345975982659726,
+      "stddev": 5.474581062398239,
       "type": "signed",
-      "variance": 0.07478024024442026
+      "variance": 29.97103780876943
     },
     {
-      "count": 822395,
-      "maximum": 0.5,
-      "mean": 0.11727086132575645,
-      "minimum": -0.31,
+      "count": 740168,
+      "maximum": 9.784,
+      "mean": 3.2935944474767096,
+      "minimum": -3.527,
       "name": "Z",
-      "scale": 0.01,
+      "offset": 3,
+      "scale": 0.001,
       "size": 4,
-      "stddev": 0.17078491681692895,
+      "stddev": 3.085791153649447,
       "type": "signed",
-      "variance": 0.029167487812165344
+      "variance": 9.522107043941183
     },
     {
-      "count": 822395,
+      "count": 740168,
       "maximum": 0,
       "mean": 0,
       "minimum": 0,
@@ -67,7 +70,7 @@
       "variance": 0
     },
     {
-      "count": 822395,
+      "count": 740168,
       "maximum": 1,
       "mean": 1,
       "minimum": 1,
@@ -78,7 +81,7 @@
       "variance": 0
     },
     {
-      "count": 822395,
+      "count": 740168,
       "maximum": 1,
       "mean": 1,
       "minimum": 1,
@@ -89,7 +92,7 @@
       "variance": 0
     },
     {
-      "count": 822395,
+      "count": 740168,
       "maximum": 0,
       "mean": 0,
       "minimum": 0,
@@ -100,7 +103,7 @@
       "variance": 0
     },
     {
-      "count": 822395,
+      "count": 740168,
       "maximum": 0,
       "mean": 0,
       "minimum": 0,
@@ -111,10 +114,10 @@
       "variance": 0
     },
     {
-      "count": 822395,
+      "count": 740168,
       "counts": [
         {
-          "count": 822395,
+          "count": 740168,
           "value": 0
         }
       ],
@@ -128,7 +131,7 @@
       "variance": 0
     },
     {
-      "count": 822395,
+      "count": 740168,
       "maximum": 0,
       "mean": 0,
       "minimum": 0,
@@ -139,18 +142,18 @@
       "variance": 0
     },
     {
-      "count": 822395,
+      "count": 740168,
       "maximum": 11,
-      "mean": 5.1725205041372675,
+      "mean": 5.266267928362195,
       "minimum": 2,
       "name": "UserData",
       "size": 1,
-      "stddev": 3.0884584327688938,
+      "stddev": 2.7701153657552537,
       "type": "unsigned",
-      "variance": 9.538575490941293
+      "variance": 7.673539139593363
     },
     {
-      "count": 822395,
+      "count": 740168,
       "maximum": 0,
       "mean": 0,
       "minimum": 0,
@@ -161,7 +164,7 @@
       "variance": 0
     },
     {
-      "count": 822395,
+      "count": 740168,
       "maximum": 0,
       "mean": 0,
       "minimum": 0,
@@ -172,39 +175,44 @@
       "variance": 0
     },
     {
-      "count": 822395,
-      "maximum": 212,
-      "mean": 142.8764292098074,
+      "count": 740168,
+      "maximum": 230,
+      "mean": 154.30074658725655,
       "minimum": 0,
       "name": "Red",
       "size": 2,
-      "stddev": 21.798657561536615,
+      "stddev": 24.4115820553839,
       "type": "unsigned",
-      "variance": 475.1814714851375
+      "variance": 595.9253384467412
     },
     {
-      "count": 822395,
+      "count": 740168,
       "maximum": 255,
-      "mean": 113.98311030587696,
-      "minimum": 4,
+      "mean": 121.08495638828066,
+      "minimum": 0,
       "name": "Green",
       "size": 2,
-      "stddev": 25.755931663575197,
+      "stddev": 24.631183020788765,
       "type": "unsigned",
-      "variance": 663.3680158587555
+      "variance": 606.6951770035927
     },
     {
-      "count": 822395,
+      "count": 740168,
       "maximum": 255,
-      "mean": 92.71663373439694,
-      "minimum": 12,
+      "mean": 95.4154367657082,
+      "minimum": 0,
       "name": "Blue",
       "size": 2,
-      "stddev": 31.275035968251586,
+      "stddev": 27.191731889591992,
       "type": "unsigned",
-      "variance": 978.1278748154303
+      "variance": 739.3902831554541
     }
   ],
   "span": 128,
+  "srs": {
+    "authority": "EPSG",
+    "horizontal": "32616",
+    "wkt": "PROJCS[\"WGS 84 / UTM zone 16N\",GEOGCS[\"WGS 84\",DATUM[\"WGS_1984\",SPHEROID[\"WGS 84\",6378137,298.257223563,AUTHORITY[\"EPSG\",\"7030\"]],AUTHORITY[\"EPSG\",\"6326\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4326\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",-87],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH],AUTHORITY[\"EPSG\",\"32616\"]]"
+  },
   "version": "1.1.0"
 }

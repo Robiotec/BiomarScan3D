@@ -1,16 +1,16 @@
 [
   {
     "bounds": [
-      -0.6259603500366211,
-      -0.7325923442840576,
-      -0.3061567544937134,
-      0.9267765283584595,
-      0.5126932859420776,
-      0.4976433515548706
+      668179.6880559921,
+      -3.685257911682129,
+      -3.527371406555176,
+      668211.963142395,
+      19.67169189453125,
+      9.784050941467285
     ],
     "inserted": true,
     "metadataPath": "odm_georeferenced_model.json",
-    "path": "/var/www/data/9b8b6454-9a39-4fb1-849f-684470b0bc89/odm_georeferencing/odm_georeferenced_model.laz",
-    "points": 822395
+    "path": "/var/www/data/a8607fc5-160c-4d1d-b8a7-cbd78d65f088/odm_georeferencing/odm_georeferenced_model.laz",
+    "points": 740168
   }
 ]

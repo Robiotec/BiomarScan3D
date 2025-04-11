@@ -1,58 +1,71 @@
 {
-  "file_size": 1817378,
-  "filename": "/var/www/data/9b8b6454-9a39-4fb1-849f-684470b0bc89/odm_georeferencing/odm_georeferenced_model.laz",
-  "now": "2025-04-10T21:33:12+0000",
+  "file_size": 2999032,
+  "filename": "/var/www/data/a8607fc5-160c-4d1d-b8a7-cbd78d65f088/odm_georeferencing/odm_georeferenced_model.laz",
+  "now": "2025-04-11T19:37:57+0000",
   "pdal_version": "2.4.3 (git-version: Release)",
   "reader": "readers.las",
   "stats":
   {
     "bbox":
     {
+      "EPSG:4326":
+      {
+        "bbox":
+        {
+          "maxx": -85.48849809,
+          "maxy": 0.0001779164338,
+          "maxz": 9.784,
+          "minx": -85.48878803,
+          "miny": -3.332767682e-05,
+          "minz": -3.527
+        },
+        "boundary": { "type": "Polygon", "coordinates": [ [ [ -85.488788032865074, -0.000033327676824, -3.527 ], [ -85.488788032858082, 0.000177916433783, -3.527 ], [ -85.48849808716399, 0.000177916409868, 9.784 ], [ -85.488498087170981, -0.000033327672345, 9.784 ], [ -85.488788032865074, -0.000033327676824, -3.527 ] ] ] }
+      },
       "native":
       {
         "bbox":
         {
-          "maxx": 0.93,
-          "maxy": 0.51,
-          "maxz": 0.5,
-          "minx": -0.63,
-          "miny": -0.73,
-          "minz": -0.31
+          "maxx": 668211.963,
+          "maxy": 19.672,
+          "maxz": 9.784,
+          "minx": 668179.688,
+          "miny": -3.685,
+          "minz": -3.527
         },
-        "boundary": { "type": "Polygon", "coordinates": [ [ [ -0.63, -0.73, -0.31 ], [ -0.63, 0.51, -0.31 ], [ 0.93, 0.51, 0.5 ], [ 0.93, -0.73, 0.5 ], [ -0.63, -0.73, -0.31 ] ] ] }
+        "boundary": { "type": "Polygon", "coordinates": [ [ [ 668179.687999999965541, -3.685, -3.527 ], [ 668179.687999999965541, 19.672, -3.527 ], [ 668211.962999999988824, 19.672, 9.784 ], [ 668211.962999999988824, -3.685, 9.784 ], [ 668179.687999999965541, -3.685, -3.527 ] ] ] }
       }
     },
     "statistic":
     [
       {
-        "average": 0.1116005934,
-        "count": 822395,
-        "maximum": 0.93,
-        "minimum": -0.63,
+        "average": 668194.7839,
+        "count": 740168,
+        "maximum": 668211.963,
+        "minimum": 668179.688,
         "name": "X",
         "position": 0,
-        "stddev": 0.3821478901,
-        "variance": 0.1460370099
+        "stddev": 8.262054784,
+        "variance": 68.26154925
       },
       {
-        "average": -0.1082101058,
-        "count": 822395,
-        "maximum": 0.51,
-        "minimum": -0.73,
+        "average": 6.485291539,
+        "count": 740168,
+        "maximum": 19.672,
+        "minimum": -3.685,
         "name": "Y",
         "position": 1,
-        "stddev": 0.2734599261,
-        "variance": 0.07478033117
+        "stddev": 5.474584761,
+        "variance": 29.9710783
       },
       {
-        "average": 0.1172708613,
-        "count": 822395,
-        "maximum": 0.5,
-        "minimum": -0.31,
+        "average": 3.293594447,
+        "count": 740168,
+        "maximum": 9.784,
+        "minimum": -3.527,
         "name": "Z",
         "position": 2,
-        "stddev": 0.1707850207,
-        "variance": 0.02916752328
+        "stddev": 3.085793238,
+        "variance": 9.522119909
       }
     ]
   }
